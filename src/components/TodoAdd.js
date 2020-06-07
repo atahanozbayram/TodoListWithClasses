@@ -17,7 +17,7 @@ class TodoAdd extends React.Component {
 		return (
 			<div>
 				<label>Todo: </label>
-				<input type="text" />
+				<input type="text" ref={this.inputRef} />
 				<button>add</button>
 			</div>
 		);
