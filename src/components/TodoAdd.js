@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class TodoAdd extends React.Component {
 	constructor(props) {
@@ -6,6 +7,7 @@ class TodoAdd extends React.Component {
 
 		// Create a ref, we will use it in input[type="text"] element to get it's value
 		this.inputRef = React.createRef();
+		this.buttonCbWrapper = this.buttonCbWrapper.bind(this);
 	}
 
 	componentDidMount() {
@@ -13,16 +15,34 @@ class TodoAdd extends React.Component {
 		this.inputRef.current.focus();
 	}
 
+	buttonCbWrapper() {
+		// First check if the input's value is not null
+		if (this.inputRef.current.value === '') {
+			return; // terminate the function
+		}
+		// If the code comes here, that means we can call the callback function.
+		this.props.callback(this.inputRef.current.value);
+		// also clean up the inputRef.current's value for new input
+		this.inputRef.current.value = '';
+	}
+
 	render() {
 		return (
 			<div>
 				<label>Todo: </label>
 				<input type="text" ref={this.inputRef} />
-				<button>add</button>
+				{/* callback is bind to the TodoApp object, so first argument of the binding below should be null
+				and the first argument to be supplied to callback is text value of the todo, which is obtained from inputRef.current.value*/}
+				<button onClick={this.buttonCbWrapper.bind(null)}>Add</button>
 			</div>
 		);
 	}
 }
+
+// Define some propTypes
+TodoAdd.propTypes = {
+	callback: PropTypes.func.isRequired,
+};
 
 // export TodoAdd as default
 export { TodoAdd as default };
