@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Todo from './Todo';
+import Todo from '../components/Todo';
 
 // Purpose of this class is to render an unordered list and
 // inside of that list, it should render Todo elements inside li elements.
