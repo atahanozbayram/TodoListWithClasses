@@ -30,3 +30,6 @@ Todo.propTypes = {
 	text: PropTypes.string.isRequired, // it will represent the todo's content, what todo is meant.
 	completed: PropTypes.bool.isRequired, // it will hold the status of the todo.
 };
+
+// export the class as default
+export { Todo as default };
