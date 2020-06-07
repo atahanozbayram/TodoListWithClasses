@@ -20,7 +20,7 @@ class TodoApp extends React.Component {
 		return (
 			<div>
 				<TodoAdd />
-				<TodoList todoArray={todoArray} />;
+				<TodoList todoArray={todoArray} />
 			</div>
 		);
 	}

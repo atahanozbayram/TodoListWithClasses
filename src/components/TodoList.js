@@ -12,7 +12,6 @@ class TodoList extends React.Component {
 	render() {
 		// Destructuring some props, this helps keeping the code short
 		const { todoArray } = this.props;
-
 		return (
 			<ul>
 				{
@@ -28,7 +27,7 @@ class TodoList extends React.Component {
 
 // Define prop types, so it helps debuggin.
 TodoList.propTypes = {
-	todoArray: PropTypes.arrayOf(Todo.propTypes),
+	todoArray: PropTypes.arrayOf(PropTypes.shape(Todo.propTypes)),
 };
 
 // export as default
