@@ -1,0 +1,22 @@
+This file contains the features I plan to implement for TODO application.
+
+-There should be some input section to add new todos.
+-Todos should be saved in the browser, so even though website gets refreshed, todos should be the same.
+-Todos should be able to deleted and removed from the todo list.
+-Todos components completed properties should be able to toggled.
+
+-TodoList should have three choices to show which todos should be placed. One of them to show all of the todos,
+one of them should show only completed todos, and the last one should show only todos that are not completed.
+
+-Every todo component should have the text of the todo, two buttons, one of them for deleting the todo, the other for toggling
+the completed property.
+
+-Todo app should be styled well, maybe using css modules or, styled-components or some css framework.
+-Code should be commented on every possible time.
+
+-git changes should be committed with every little change.
+-implement propTypes as much as possible.
+
+
+-Firstly implement TodoApp's needs, later on add or change design, make it better. Use CSS, maybe some frameworks.
+Make it look beautiful, and try to take this app seriously, even though it's seems little and unimportant.
