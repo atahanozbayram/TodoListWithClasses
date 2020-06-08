@@ -20,6 +20,20 @@ class TodoApp extends React.Component {
 		this.todoAddCb = this.todoAddCb.bind(this);
 	}
 
+	// todoDeleteCb is a callback for deleting a todo from todoArray property of the state
+	todoDeleteCb(todoId) {
+		this.setState((currentState) => {
+			const { todoArray } = currentState;
+
+			return {
+				todoArray: todoArray.filter((todo) => {
+					if (todo.id === todoId) return false;
+					return true;
+				}),
+			};
+		});
+	}
+
 	// todoAddCb is a callback for adding new todo's to the todoArray property of the state
 	todoAddCb(todoText) {
 		// set the state with newly provided todo
