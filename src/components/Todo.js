@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TodoDeleteCbContext } from '../contexts/TodoAppContext';
 
 class Todo extends React.Component {
 	constructor(props) {
@@ -9,12 +10,14 @@ class Todo extends React.Component {
 	render() {
 		// destructure the props and take what is needed, so
 		// writing code too long will be shortened.
-		const { text, completed } = this.props;
+		const { id, text, completed } = this.props;
 
 		return (
 			<React.Fragment>
 				<p>{text}</p>
-				<button>Delete</button>
+				<TodoDeleteCbContext.Consumer>
+					{(deleteCallback) => <button onClick={deleteCallback.bind(null, id)}>Delete</button>}
+				</TodoDeleteCbContext.Consumer>
 				<button>{completed ? 'Uncomplete' : 'Complete'}</button>
 			</React.Fragment>
 		);

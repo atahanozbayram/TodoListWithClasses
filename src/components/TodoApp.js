@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from '../components/TodoList';
 import TodoAdd from '../components/TodoAdd';
+import { TodoDeleteCbContext } from '../contexts/TodoAppContext';
 
 class TodoApp extends React.Component {
 	constructor(props) {
@@ -18,6 +19,7 @@ class TodoApp extends React.Component {
 
 		// bind the todoAddCb callback to this class object
 		this.todoAddCb = this.todoAddCb.bind(this);
+		this.todoDeleteCb = this.todoDeleteCb.bind(this);
 	}
 
 	// todoDeleteCb is a callback for deleting a todo from todoArray property of the state
@@ -67,7 +69,9 @@ class TodoApp extends React.Component {
 				<form>
 					<TodoAdd callback={this.todoAddCb} />
 				</form>
-				<TodoList todoArray={todoArray} />
+				<TodoDeleteCbContext.Provider value={this.todoDeleteCb}>
+					<TodoList todoArray={todoArray} />
+				</TodoDeleteCbContext.Provider>
 			</div>
 		);
 	}
