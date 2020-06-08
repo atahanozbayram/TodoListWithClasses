@@ -15,7 +15,9 @@ class TodoAdd extends React.Component {
 		this.inputRef.current.focus();
 	}
 
-	buttonCbWrapper() {
+	buttonCbWrapper(event) {
+		// preventDefault for preventing webpage to reload.
+		event.preventDefault();
 		// First check if the input's value is not null
 		if (this.inputRef.current.value === '') {
 			return; // terminate the function
@@ -33,7 +35,7 @@ class TodoAdd extends React.Component {
 				<input type="text" ref={this.inputRef} />
 				{/* callback is bind to the TodoApp object, so first argument of the binding below should be null
 				and the first argument to be supplied to callback is text value of the todo, which is obtained from inputRef.current.value*/}
-				<button onClick={this.buttonCbWrapper.bind(null)}>Add</button>
+				<button onClick={this.buttonCbWrapper}>Add</button>
 			</div>
 		);
 	}

@@ -50,7 +50,9 @@ class TodoApp extends React.Component {
 
 		return (
 			<div>
-				<TodoAdd callback={this.todoAddCb} />
+				<form>
+					<TodoAdd callback={this.todoAddCb} />
+				</form>
 				<TodoList todoArray={todoArray} />
 			</div>
 		);
