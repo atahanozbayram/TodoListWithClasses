@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoList from '../components/TodoList';
 import TodoAdd from '../components/TodoAdd';
-import { TodoDeleteCbContext } from '../contexts/TodoAppContext';
+import { TodoDeleteCbContext, TodoToggleCompleteCbContext } from '../contexts/TodoAppContext';
 
 class TodoApp extends React.Component {
 	constructor(props) {
@@ -20,6 +20,20 @@ class TodoApp extends React.Component {
 		// bind the todoAddCb callback to this class object
 		this.todoAddCb = this.todoAddCb.bind(this);
 		this.todoDeleteCb = this.todoDeleteCb.bind(this);
+		this.todoToggleCompletedCb = this.todoToggleCompletedCb.bind(this);
+	}
+
+	// todoToggleCompleteCb is a callback for toggling the boolean property of the todo.
+	todoToggleCompletedCb(todoId) {
+		this.setState((currentState) => {
+			const { todoArray } = currentState;
+
+			return {
+				todoArray: todoArray.map((todo) => {
+					return { ...todo, completed: !todo.completed };
+				}),
+			};
+		});
 	}
 
 	// todoDeleteCb is a callback for deleting a todo from todoArray property of the state
@@ -70,7 +84,9 @@ class TodoApp extends React.Component {
 					<TodoAdd callback={this.todoAddCb} />
 				</form>
 				<TodoDeleteCbContext.Provider value={this.todoDeleteCb}>
-					<TodoList todoArray={todoArray} />
+					<TodoToggleCompleteCbContext.Provider value={this.todoToggleCompletedCb}>
+						<TodoList todoArray={todoArray} />
+					</TodoToggleCompleteCbContext.Provider>
 				</TodoDeleteCbContext.Provider>
 			</div>
 		);
