@@ -30,7 +30,10 @@ class TodoApp extends React.Component {
 
 			return {
 				todoArray: todoArray.map((todo) => {
-					return { ...todo, completed: !todo.completed };
+					// match the todoId with todo.id, if that happens return todo with
+					// reversed completed property, otherwise return just todo itself
+					if (todo.id === todoId) return { ...todo, completed: !todo.completed };
+					return todo;
 				}),
 			};
 		});
