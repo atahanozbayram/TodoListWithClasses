@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TodoDeleteCbContext, TodoToggleCompleteCbContext } from '../contexts/TodoAppContext';
+import styles from '../styles/style.module.css';
 
 class Todo extends React.Component {
 	constructor(props) {
@@ -13,17 +14,27 @@ class Todo extends React.Component {
 		const { id, text, completed } = this.props;
 
 		return (
-			<React.Fragment>
-				<p>{text}</p>
-				<TodoDeleteCbContext.Consumer>
-					{(deleteCallback) => <button onClick={deleteCallback.bind(null, id)}>Delete</button>}
-				</TodoDeleteCbContext.Consumer>
+			<li className={styles.todo}>
+				<p style={{ textDecoration: completed ? 'line-through' : '' }}>{text}</p>
+
 				<TodoToggleCompleteCbContext.Consumer>
 					{(toggleCallback) => (
-						<button onClick={toggleCallback.bind(null, id)}>{completed ? 'Uncomplete' : 'Complete'}</button>
+						<button
+							onClick={toggleCallback.bind(null, id)}
+							className={styles.todoToggle + ' ' + (completed ? styles.todoUnCompleted : styles.todoCompleted)}
+						>
+							{completed ? 'Uncomplete' : 'Complete'}
+						</button>
 					)}
 				</TodoToggleCompleteCbContext.Consumer>
-			</React.Fragment>
+				<TodoDeleteCbContext.Consumer>
+					{(deleteCallback) => (
+						<button onClick={deleteCallback.bind(null, id)} className={styles.todoDelete}>
+							Delete
+						</button>
+					)}
+				</TodoDeleteCbContext.Consumer>
+			</li>
 		);
 	}
 }

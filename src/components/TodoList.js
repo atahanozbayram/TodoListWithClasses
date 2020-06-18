@@ -17,11 +17,7 @@ class TodoList extends React.Component {
 				{
 					// Loop through the todoArray, and render Todo elements with the given objects.
 					todoArray.map((todo) => {
-						return (
-							<li key={todo.id}>
-								<Todo id={todo.id} text={todo.text} completed={todo.completed} />
-							</li>
-						);
+						return <Todo id={todo.id} text={todo.text} key={todo.id} completed={todo.completed} />;
 					})
 				}
 			</ul>

@@ -17,6 +17,8 @@
 
 .todoAddContainer > div > * {
 	flex: 1;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .todoAddContainer > div > label {
@@ -28,6 +30,7 @@
 .todoAddContainer > div > input[type='text'] {
 	border: none;
 	height: 45px;
+	font-size: 20px;
 }
 
 .todoAddContainer > div > button {
@@ -35,16 +38,56 @@
 	border: none;
 	height: 45px;
 	background-color: #fa9917;
-	color: black;
+	color: #fff;
 	font-size: 30px;
-	border: 2px solid black;
+	border: 4px solid #fff;
 }
 
 .todoAddContainer > div > button:hover {
 	background-color: #faaa00;
+	font-size: 35px;
 }
 
 .todoAddContainer > div > button:active {
+	color: #000;
+	border-color: #000;
+}
+
+.todo {
+	display: flex;
+	width: 100%;
+	height: 40px;
+	margin-left: 5px;
+}
+
+.todo > * {
+	flex: 1;
+	margin-top: 5px;
+}
+
+.todo > p {
+	font-size: 20px;
+}
+
+.todo > .todoDelete {
+	max-width: 300px;
+	border: 0px;
+	background-color: #ff0000;
 	color: #fff;
-	border-color: #fff;
+	font-size: 30px;
+}
+
+.todo > .todoToggle {
+	max-width: 300px;
+	border: 0px;
+	color: #fff;
+	font-size: 30px;
+}
+
+.todoCompleted {
+	background-color: #009900;
+}
+
+.todoUnCompleted {
+	background-color: #000000;
 }
