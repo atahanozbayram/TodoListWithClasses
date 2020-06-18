@@ -83,9 +83,10 @@ class TodoApp extends React.Component {
 
 		return (
 			<div>
-				<form>
-					<TodoAdd callback={this.todoAddCb} />
-				</form>
+				<div style={{ backgroundColor: '#333', height: '125px', textAlign: 'center' }}>
+					<h1 style={{ fontSize: '50px', color: '#fff', lineHeight: '125px' }}>Todo List</h1>
+				</div>
+				<TodoAdd callback={this.todoAddCb} />
 				<TodoDeleteCbContext.Provider value={this.todoDeleteCb}>
 					<TodoToggleCompleteCbContext.Provider value={this.todoToggleCompletedCb}>
 						<TodoList todoArray={todoArray} />
